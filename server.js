@@ -5,14 +5,15 @@ var ejs = require('ejs');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var flash = require('connect-flash');
+
 // MIDDLEWARE 
 // view engine setup
-server.set('view engine', 'ejs')
+server.set('view engine', 'ejs');
+
 // express setup
 server.use(express.json())
-server.use(express.urlencoded({
-    extended: true
-}))
+server.use(express.urlencoded({ extended: true }));
+
 // cookie-parser setup (needed for flash messages)
 server.use(cookieParser('keyboard cat'));
 // session setup (needed for Auth process)

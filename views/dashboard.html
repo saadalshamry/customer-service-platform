@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="./../public/assets/css/styles.css" />
+    <!--link rel="stylesheet" type="text/css" media="screen" href="/assets/css/styles.css"/-->
+    <!-- Latest compiled and minified JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://momentjs.com/downloads/moment-with-locales.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+    <!-- Local CSS -->
+    <script src="./../public/assets/js/main.js"></script>
+    <!--script src="/assets/js/main.js"></script-->
+</head>
+
+<body>
+
+    <header class="navbar navbar-expand-sm navbar-dark bg-dark-blue">
+        <div class="navbar-brand mr-2">
+            <button class="btn btn-warning form-control" title="Costomer Service Platform">
+                <i class="fas fa-headset"></i> CSR
+            </button>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+            aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <div class="form-inline mr-auto mt-2 mt-sm-0">
+                <button class="btn btn-info mr-2 form-control">
+                    <i class="fas fa-home"></i> Dashboard
+                </button>
+                <div class="btn-group p-0 mb-2 mb-sm-0 form-control border-0" role="group">
+                    <button id="btnGroupDrop" type="button" class="btn btn-secondary w-100 dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-plus-circle"></i> New
+                    </button>
+
+                    <div class="dropdown-menu bg-dark-blue w-100" aria-labelledby="btnGroupDrop">
+                        <button class="btn btn-outline-light border-0 w-100" data-toggle="modal" data-target="#companyModal">
+                            <i class="far fa-building"></i> Company
+                        </button>
+                        <button class="btn btn-outline-light border-0 w-100" data-toggle="modal" data-target="#ticketModal">
+                            <i class="fas fa-clipboard-list"></i> Ticket
+                        </button>
+                        <button class="btn btn-outline-light border-0 w-100" data-toggle="modal" data-target="#staffModal">
+                            <i class="fas fa-users"></i> Staff
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-inline my-2 my-sm-0">
+
+                <button class="btn btn-outline-light mr-2 mb-2 mb-sm-0 form-control" data-toggle="modal" data-target="#profileModal">
+                    <i class="fas fa-user-edit"></i> My Profile
+                </button>
+                <button class="btn btn-danger mr-2 form-control">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row flex-xl-nowrap">
+            <div class="col-12 col-xl-2 col-lg-3 bd-sidebar pl-0 pr-2">
+                <div class="jumbotron jumbotron-fluid py-3">
+                    <div class="container mx-auto text-center justify-content-center">
+                        <p class="display-1">
+                            <i class="fas fa-user-circle"></i>
+                        </p>
+                        <p class="lead">Customer Service Platform</p>
+                        <form class="form-inline my-2 my-lg-0 justify-content-center">
+                            <div class="input-group mb-3">
+                                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <main class="col-12 col-xl-10 col-lg-9 py-md-3 pl-md-2 bd-content">
+                <div class="row justify-content-center">
+
+                    <div class="col-12 mb-3">
+                        <div class="card border-dark">
+                            <div class="card-header bg-secondary">
+                                <button class="btn btn-light float-left">
+                                    <i class="fas fa-building"></i> Companies
+                                </button>
+                                <button class="btn btn-warning float-right" data-toggle="modal" data-target="#companyModal">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive-lg">
+                                    <table class="table table-bordered table-hover m-0">
+                                        <caption>List of Bussinesses & Companies</caption>
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col"><i class="fas fa-hashtag"></i></th>
+                                                <th scope="col"><i class="fas fa-language"></i> Name</th>
+                                                <th scope="col"><i class="fas fa-user"></i> Contact</th>
+                                                <th scope="col"><i class="fas fa-envelope"></i> Email</th>
+                                                <th scope="col"><i class="fas fa-phone"></i> Phone</th>
+                                                <th scope="col"><i class="fas fa-map-marked-alt"></i> Country</th>
+                                                <th scope="col"><i class="fas fa-map-marker-alt"></i> City</th>
+                                                <th scope="col"><i class="fas fa-info-circle"></i> More</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>Jacob</td>
+                                                <td>Thornton</td>
+                                                <td>@fat</td>
+                                                <td>@fat</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td>Larry</td>
+                                                <td>the Bird</td>
+                                                <td>@twitter</td>
+                                                <td>@twitter</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="card-footer text-muted">
+                                2 days ago
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 mb-3">
+                        <div class="card border-dark">
+                            <div class="card-header bg-secondary">
+                                <button class="btn btn-light float-left">
+                                    <i class="fas fa-users"></i> Staff
+                                </button>
+                                <button class="btn btn-warning float-right" data-toggle="modal" data-target="#staffModal">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive-lg">
+                                    <table class="table table-bordered table-hover m-0">
+                                        <caption>List of Staff</caption>
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col"><i class="fas fa-hashtag"></i></th>
+                                                <th scope="col"><i class="fas fa-language"></i> Name</th>
+                                                <th scope="col"><i class="fas fa-users"></i> Role</th>
+                                                <th scope="col"><i class="fas fa-envelope"></i> Email</th>
+                                                <th scope="col"><i class="fas fa-phone"></i> Phone</th>
+                                                <th scope="col"><i class="fas fa-check-double"></i> Status</th>
+                                                <th scope="col"><i class="fas fa-info-circle"></i> More</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>Jacob</td>
+                                                <td>Thornton</td>
+                                                <td>@fat</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td>Larry</td>
+                                                <td>the Bird</td>
+                                                <td>@twitter</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="card-footer text-muted">
+                                2 days ago
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 mb-3">
+                        <div class="card border-dark">
+                            <div class="card-header bg-secondary">
+                                <button class="btn btn-light float-left">
+                                    <i class="fas fa-clipboard-list"></i> Tickets
+                                </button>
+                                <button class="btn btn-warning float-right" data-toggle="modal" data-target="#ticketModal">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive-lg">
+                                    <table class="table table-bordered table-hover m-0">
+                                        <caption>List of Tickets</caption>
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col"><i class="fas fa-hashtag"></i></th>
+                                                <th scope="col"><i class="fas fa-building"></i> Company</th>
+                                                <th scope="col"><i class="fas fa-user-tie"></i> Technician</th>
+                                                <th scope="col"><i class="fas fa-check-double"></i> Status</th>
+                                                <th scope="col"><i class="fas fa-sync-alt"></i> Updated</th>
+                                                <th scope="col"><i class="far fa-clock"></i> Created</th>
+                                                <th scope="col"><i class="fas fa-info-circle"></i> More</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-warning" title="Details">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-primary mx-3" title="Edit">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-danger" title="Delete">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>Jacob</td>
+                                                <td>Thornton</td>
+                                                <td>@fat</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td>Larry</td>
+                                                <td>the Bird</td>
+                                                <td>@twitter</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="card-footer text-muted">
+                                2 days ago
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+    </div>
+
+    <!-- Profile Modal -->
+    <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-dark-blue">
+                    <button class="btn btn-outline-light" id="modalheader">
+                        <i class="fas fa-user-edit"></i> My Profile
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="form-row form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-info" disabled><i class="fas fa-user"></i>
+                                    </button>
+                                </div>
+                                <input type="text" class="form-control" name="myname" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-dark" disabled><i class="fas fa-users"></i></button>
+                                </div>
+                                <select class="form-control" required name="myrole">
+                                    <option value="" selected>Select a Role</option>
+                                    <option value="csr">CSR</option>
+                                    <option value="technician">Technician</option>
+                                    <option value="manager">Manager</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-dark" disabled><i class="fas fa-phone"></i>
+                                    </button>
+                                </div>
+                                <input type="text" class="form-control" name="myphone" placeholder="Phone Number">
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-dark" disabled><i class="fas fa-envelope"></i>
+                                    </button>
+                                </div>
+                                <input type="email" class="form-control" name="myemail" placeholder="Email Address">
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-warning" disabled><i class="fas fa-key"></i>
+                                    </button>
+                                </div>
+                                <input type="password" class="form-control" name="mypassword" placeholder="Password">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary cmd">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Company Modal -->
+    <div class="modal fade" id="companyModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-dark-blue">
+                    <button class="btn btn-outline-light" id="modalheader">
+                        <i class="fas fa-building"></i> Add Company
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="form-row form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-dark" disabled><i class="fas fa-building"></i>
+                                    </button>
+                                </div>
+                                <input type="text" class="form-control" name="companyname" placeholder="Company Name">
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-dark" disabled><i class="fas fa-user"></i>
+                                    </button>
+                                </div>
+                                <input type="text" class="form-control" name="contactname" placeholder="Contact Name">
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-dark" disabled><i class="fas fa-envelope"></i>
+                                    </button>
+                                </div>
+                                <input type="email" class="form-control" name="companyemail" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-dark" disabled><i class="fas fa-phone"></i>
+                                    </button>
+                                </div>
+                                <input type="text" class="form-control" name="companyphone" placeholder="Phone">
+                            </div>
+                        </div>
+
+                        <div class="form-row form-group">
+                            <div class="input-group-prepend">
+                                <button type="button" class="btn btn-info" disabled><i class="fas fa-map-marker-alt"></i>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <div class="input-group">
+
+                                    <input type="text" class="form-control" name="companyaddress1" placeholder="Address 1 (Required)">
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="companyaddress2" placeholder="Address 2 (Optional)">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row form-group">
+                            <div class="input-group-prepend">
+                                <button type="button" class="btn btn-info" disabled><i class="fas fa-map-marked-alt"></i>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="companycity" placeholder="City">
+                                    <input type="text" class="form-control" name="companyprovince" placeholder="Province/State">
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="companypostal" placeholder="Postal Code">
+                                    <select class="form-control" required name="companycountry">
+                                        <option value="" selected>Select a Country</option>
+                                        <option value="csr">CSR</option>
+                                        <option value="technician">Technician</option>
+                                        <option value="manager">Manager</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary cmd">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Staff Modal -->
+    <div class="modal fade" id="staffModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-dark-blue">
+                    <button class="btn btn-outline-light" id="modalheader">
+                        <i class="fas fa-users"></i> Add Staff
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="form-row form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-info" disabled><i class="fas fa-user"></i>
+                                    </button>
+                                </div>
+                                <input type="text" class="form-control" name="staffname" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-dark" disabled><i class="fas fa-users"></i></button>
+                                </div>
+                                <select class="form-control" required name="staffrole">
+                                    <option value="" selected>Select a Role</option>
+                                    <option value="csr">CSR</option>
+                                    <option value="technician">Technician</option>
+                                    <option value="manager">Manager</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-dark" disabled><i class="fas fa-phone"></i>
+                                    </button>
+                                </div>
+                                <input type="text" class="form-control" name="staffphone" placeholder="Phone Number">
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-dark" disabled><i class="fas fa-envelope"></i>
+                                    </button>
+                                </div>
+                                <input type="email" class="form-control" name="staffemail" placeholder="Email Address">
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-warning" disabled><i class="fas fa-key"></i>
+                                    </button>
+                                </div>
+                                <input type="password" class="form-control" name="staffpassword" placeholder="Password">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary cmd">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ticket Modal -->
+    <div class="modal fade" id="ticketModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-dark-blue">
+                    <button class="btn btn-outline-light" id="modalheader">
+                        <i class="fas fa-clipboard-list"></i> Add Ticket
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="form-row form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-info" disabled><i class="fas fa-user"></i>
+                                    </button>
+                                </div>
+                                <input type="text" class="form-control" name="ticketname" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-secondary" disabled><i class="fas fa-building"></i>
+                                    </button>
+                                </div>
+                                <input type="text" class="form-control" name="ticketcompany" placeholder="Company Name">
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-secondary" disabled><i class="fas fa-phone"></i>
+                                    </button>
+                                </div>
+                                <input type="number" class="form-control" name="ticketphone" placeholder="Phone Number">
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-secondary" disabled><i class="fas fa-envelope"></i>
+                                    </button>
+                                </div>
+                                <input type="email" class="form-control" name="ticketemail" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-secondary" disabled><i class="fas fa-info"></i>
+                                    </button>
+                                </div>
+                                <textarea class="form-control" name="ticketdescription" placeholder="Description" rows="2"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-secondary" disabled><i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <textarea class="form-control" name="ticketresolution" placeholder="Resolution" rows="2"></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary cmd">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
