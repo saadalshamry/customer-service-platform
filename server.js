@@ -60,6 +60,9 @@ server.get("/dashboard", mw.isLoggedIn, function(req, res) {
   });
 });
 
+server.get("/", (req, res) => {
+  res.redirect("/auth/login");
+});
 // SERVER SETUP
 var PORT = process.env.PORT || 3000;
 db.sequelize.sync();

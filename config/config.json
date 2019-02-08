@@ -8,17 +8,17 @@
     "port": "3306"
   },
   "test": {
-    "username": "root",
-    "password": null,
+    "username": "b93b892ec0485e",
+    "password": "a8c5a953",
     "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "username": "b93b892ec0485e",
+    "password": "a8c5a953",
+    "database": "heroku_df947b1179f1091",
+    "host": "us-cdbr-iron-east-03.cleardb.net",
     "dialect": "mysql"
   }
 }
