@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 var salt = bcrypt.genSaltSync(10);
 // add staff page
 router.get("/register", (req, res) => {
-  res.render("auth/add-staff");
+  res.render("register");
 });
 
 // add staff logic
@@ -29,11 +29,13 @@ router.post("/register", (req, res) => {
       })
         .then(() => {
           // staff created
-          res.redirect("back");
+          res.redirect("/dashboard");
         })
         .catch(err => {
           // something went wrong
+          req.flash("err", "somthing went wrong");
           res.redirect("back");
+          console.log(err);
         });
     }
   });
@@ -41,7 +43,7 @@ router.post("/register", (req, res) => {
 
 // login page
 router.get("/login", (req, res) => {
-  res.render("auth/login");
+  res.render("login");
 });
 // handle login
 router.post("/login", (req, res) => {
@@ -59,9 +61,10 @@ router.post("/login", (req, res) => {
           req.session.user = {
             name: user.employeeName,
             email: user.employeeEmail,
-            id: user.id
+            id: user.id,
+            role: user.employeeRole
           };
-          res.redirect("/auth/login");
+          res.redirect("/dashboard");
         } else {
           // failed - go ahead and redirct back
           res.redirect("/login");
@@ -75,8 +78,16 @@ router.post("/login", (req, res) => {
   });
 });
 
-// test route to see session
-router.get("/session", (req, res) => {
-  res.send(req.session);
+// logout
+router.get("/logout", (req, res) => {
+  req.session.destroy();
+  res.redirect("/auth/login");
+});
+
+router.get("/delete-user/:id", (req, res) => {
+  db.Staff.findOne({ id: req.params.id }).then(user => {
+    user.destroy();
+    res.redirect("back");
+  });
 });
 module.exports = router;
