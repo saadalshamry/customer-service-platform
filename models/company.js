@@ -1,50 +1,51 @@
-module.exports = function(sequelize, DataTypes) {
-  var Company = sequelize.define("Company", {
-    companyName: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    companyAddress1: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    companyAddress2: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
-    companyCity: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    companyProv: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    companyCountry: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        defaultValue: "Canada"
-    },
-    companyPostalCode: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    companyEmail: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    companyPhone: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    companyContact: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    companyStatus: {
-      type: DataTypes.STRING,
-      defaultValue: "Active"
-    }
-  });
-  return Company;
+module.exports = function (sequelize, DataTypes) {
+    var Company = sequelize.define("Company", {
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        contact: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        phone: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        address1: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        address2: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        city: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        province: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        postal: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        country: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: "CA"
+        },
+        status: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: "Active"
+        }
+    });
+    return Company;
 };

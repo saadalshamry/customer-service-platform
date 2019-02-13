@@ -13,12 +13,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- Local CSS -->
-    <link rel="stylesheet" type="text/css" media="screen" href="./../public/assets/css/fontawesome.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="./../public/assets/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="./../public/assets/css/styles.css">
-    <!--link rel="stylesheet" type="text/css" media="screen" href="/assets/css/fontawesome.css"/>
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/bootstrap.css"/>
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/styles.css"/-->
+    <!--link rel="stylesheet" type="text/css" media="screen" href="./../public/assets/css/styles.css"-->
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/styles.css" />
 
     <!-- Latest compiled and minified JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -28,18 +24,14 @@
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
     <!-- Local JS -->
-    <script src="./../public/assets/js/bootstrap.js"></script>
-    <script src="./../public/assets/js/moment.js"></script>
-    <script src="./../public/assets/js/main.js"></script>
-    <!--script src="/assets/js/bootstrap.js"></script>
-    <script src="/assets/js/moment.js"></script>
-    <script src="/assets/js/main.js"></script-->
+    <!--script src="./../public/assets/js/main.js"></script-->
+    <script src="/assets/js/main.js"></script>
 </head>
 
 <body>
 
     <header class="navbar navbar-expand-sm navbar-dark bg-dark-blue">
-        <div class="navbar-brand mr-2">
+        <div class="navbar-brand mr-2 user-role"><%- icon%>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
             aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,13 +51,13 @@
                     </button>
 
                     <div class="dropdown-menu bg-dark-blue w-100" aria-labelledby="btnGroupDrop">
-                        <button class="btn btn-outline-light border-0 w-100 cmd" data-cmd="new" data-type="company">
+                        <button class="btn btn-outline-light border-0 w-100 cmd" data-cmd="modal" data-type="company">
                             <i class="far fa-building"></i> Company
                         </button>
-                        <button class="btn btn-outline-light border-0 w-100 cmd" data-cmd="new" data-type="ticket">
+                        <button class="btn btn-outline-light border-0 w-100 cmd" data-cmd="modal" data-type="ticket">
                             <i class="fas fa-clipboard-list"></i> Ticket
                         </button>
-                        <button class="btn btn-outline-light border-0 w-100 cmd" data-cmd="new" data-type="staff">
+                        <button class="btn btn-outline-light border-0 w-100 cmd" data-cmd="modal" data-type="staff">
                             <i class="fas fa-users"></i> Staff
                         </button>
                     </div>
@@ -81,7 +73,7 @@
                     data-type="profile">
                     <i class="fas fa-user-edit"></i> Profile
                 </button>
-                <button class="btn btn-danger mr-2 form-control cmd" data-cmd="view" data-type="logout">
+                <button class="btn btn-danger mr-2 form-control cmd" data-cmd="modal" data-type="logout">
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </button>
             </div>
@@ -117,7 +109,7 @@
                                 <button class="btn btn-light float-left">
                                     <i class="fas fa-building"></i> Companies
                                 </button>
-                                <button class="btn btn-warning float-right cmd" data-cmd="new" data-type="company">
+                                <button class="btn btn-warning float-right cmd" data-cmd="modal" data-type="company">
                                     <i class="fas fa-plus"></i>
                                 </button>
                             </div>
@@ -145,16 +137,33 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <% companies.forEach(function(company){ %>
                                             <tr>
-                                                <th scope="row">1</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
-                                                <td>@mdo</td>
-                                                <td>@mdo</td>
-                                                <td>@mdo</td>
-                                                <td data-name="more">@mdo</td>
+                                                <td>
+                                                    <%= company.id%>
+                                                </td>
+                                                <td>
+                                                    <%= company.name%>
+                                                </td>
+                                                <td>
+                                                    <%= company.contact%>
+                                                </td>
+                                                <td>
+                                                    <%= company.email%>
+                                                </td>
+                                                <td>
+                                                    <%= company.phone%>
+                                                </td>
+                                                <td>
+                                                    <%= company.country%>
+                                                </td>
+                                                <td>
+                                                    <%= company.city%>
+                                                </td>
+                                                <td>
+                                                </td>
                                             </tr>
+                                            <% }) %>
                                         </tbody>
                                     </table>
                                 </div>
@@ -171,7 +180,7 @@
                                 <button class="btn btn-light float-left">
                                     <i class="fas fa-users"></i> Staff
                                 </button>
-                                <button class="btn btn-warning float-right cmd" data-cmd="new" data-type="staff">
+                                <button class="btn btn-warning float-right cmd" data-cmd="modal" data-type="staff">
                                     <i class="fas fa-plus"></i>
                                 </button>
                             </div>
@@ -199,16 +208,33 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <% staff.forEach(function(person){ %>
                                             <tr>
-                                                <th scope="row">1</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
-                                                <td>@mdo</td>
-                                                <td>@mdo</td>
-                                                <td>@mdo</td>
-                                                <td data-name="more">@mdo</td>
+                                                <td>
+                                                    <%= person.id%>
+                                                </td>
+                                                <td>
+                                                    <%= person.name%>
+                                                </td>
+                                                <td>
+                                                    <%= person.role%>
+                                                </td>
+                                                <td>
+                                                    <%= person.email%>
+                                                </td>
+                                                <td>
+                                                    <%= person.phone%>
+                                                </td>
+                                                <td>
+                                                    <%= person.status%>
+                                                </td>
+                                                <td>
+                                                    <%= person.createdAt%>
+                                                </td>
+                                                <td>
+                                                </td>
                                             </tr>
+                                            <% }) %>
                                         </tbody>
                                     </table>
                                 </div>
@@ -225,7 +251,7 @@
                                 <button class="btn btn-light float-left">
                                     <i class="fas fa-clipboard-list"></i> Tickets
                                 </button>
-                                <button class="btn btn-warning float-right cmd" data-cmd="new" data-type="ticket">
+                                <button class="btn btn-warning float-right cmd" data-cmd="modal" data-type="ticket">
                                     <i class="fas fa-plus"></i>
                                 </button>
                             </div>
@@ -253,16 +279,33 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <% tickets.forEach(function(ticket){ %>
                                             <tr>
-                                                <th scope="row">1</th>
-                                                <td>Mark</td>
-                                                <td>Mark</td>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
-                                                <td>@mdo</td>
-                                                <td data-name="more">@mdo</td>
+                                                <td>
+                                                    <%= ticket.id%>
+                                                </td>
+                                                <td>
+                                                    <%= ticket.name%>
+                                                </td>
+                                                <td>
+                                                    <%= ticket.company%>
+                                                </td>
+                                                <td>
+                                                    <%= ticket.technician%>
+                                                </td>
+                                                <td>
+                                                    <%= ticket.isFinished%>
+                                                </td>
+                                                <td>
+                                                    <%= ticket.createdAt%>
+                                                </td>
+                                                <td>
+                                                    <%= ticket.updatedAt%>
+                                                </td>
+                                                <td>
+                                                </td>
                                             </tr>
+                                            <% }) %>
                                         </tbody>
                                     </table>
                                 </div>
@@ -283,8 +326,10 @@
                 <div class="modal-header bg-dark-blue">
                 </div>
                 <div class="modal-body text-center">
+                    <div class="container pl-3">
+                    </div>
                 </div>
-                <div class="modal-footer bg-light">
+                <div class="modal-footer">
                 </div>
             </div>
         </div>
