@@ -61,7 +61,12 @@ server.get("/", (req, res) => {
               var icon = '<button class="btn btn-outline-warning text-capitalize"><i class="fas fa-headset"></i> Technician</button>';
               break;
           }
-          res.render("dashboard", { companies, staff, tickets, icon });
+          res.render("dashboard", {
+            companies,
+            staff,
+            tickets,
+            icon
+          });
         });
       });
     });
@@ -73,7 +78,9 @@ server.get("/", (req, res) => {
 
 // SERVER SETUP
 var PORT = process.env.PORT || 3000;
-db.sequelize.sync();
+db.sequelize.sync({
+  force: true
+});
 server.listen(PORT, function () {
   console.log(`Server is listening on PORT: ${PORT}`);
 });
